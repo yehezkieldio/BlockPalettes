@@ -18,7 +18,7 @@ import org.jetbrains.annotations.NotNull;
 public class JustEnoughItemsClient implements IModPlugin {
 
 
-    private static final ResourceLocation ID = ResourceLocation.fromNamespaceAndPath(BlockPalettesClient.MOD_ID, "jei_plugin");
+    private static final ResourceLocation ID = new ResourceLocation(BlockPalettesClient.MOD_ID, "jei_plugin");
 
     @Override
     public @NotNull ResourceLocation getPluginUid() {
@@ -43,11 +43,6 @@ public class JustEnoughItemsClient implements IModPlugin {
     @Override
     public void registerIngredientAliases(IIngredientAliasRegistration registration) {
         IModPlugin.super.registerIngredientAliases(registration);
-    }
-
-    @Override
-    public void registerModInfo(IModInfoRegistration modAliasRegistration) {
-        IModPlugin.super.registerModInfo(modAliasRegistration);
     }
 
     @Override

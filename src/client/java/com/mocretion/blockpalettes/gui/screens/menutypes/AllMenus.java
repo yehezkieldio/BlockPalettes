@@ -11,7 +11,7 @@ public class AllMenus {
 
     public static final MenuType<EditMenu> EDIT_MENU_HANDLER = Registry.register(
                 BuiltInRegistries.MENU,
-                ResourceLocation.fromNamespaceAndPath(BlockPalettesClient.MOD_ID, "palette_edit"),
+                new ResourceLocation(BlockPalettesClient.MOD_ID, "palette_edit"),
                 new MenuType<>(EditMenu::new, FeatureFlags.DEFAULT_FLAGS)
 
      );

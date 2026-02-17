@@ -46,7 +46,7 @@ public class CustomDrawContext {
                 CrashReport crashReport = CrashReport.forThrowable(var12, "Rendering item");
                 CrashReportCategory crashReportSection = crashReport.addCategory("Item being rendered");
                 crashReportSection.setDetail("Item Type", () -> String.valueOf(stack.getItem()));
-                crashReportSection.setDetail("Item Components", () -> String.valueOf(stack.getComponents()));
+                crashReportSection.setDetail("Item NBT", () -> String.valueOf(stack.getTag()));
                 crashReportSection.setDetail("Item Foil", () -> String.valueOf(stack.hasFoil()));
                 throw new ReportedException(crashReport);
             }

@@ -5,8 +5,8 @@ import net.minecraft.resources.ResourceLocation;
 
 public class ButtonCatalogue {
 
-    private static final ResourceLocation BUTTON_TEXTURE = ResourceLocation.fromNamespaceAndPath(BlockPalettesClient.MOD_ID, "textures/gui/buttons.png");
-    private static final ResourceLocation HUD_TEXTURE = ResourceLocation.fromNamespaceAndPath(BlockPalettesClient.MOD_ID, "textures/gui/hotbar_hud.png");
+    private static final ResourceLocation BUTTON_TEXTURE = new ResourceLocation(BlockPalettesClient.MOD_ID, "textures/gui/buttons.png");
+    private static final ResourceLocation HUD_TEXTURE = new ResourceLocation(BlockPalettesClient.MOD_ID, "textures/gui/hotbar_hud.png");
 
     public static final int smallButtonSize = 14;
     public static final int xsButtonSize = 10;

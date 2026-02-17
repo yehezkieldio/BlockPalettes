@@ -33,11 +33,11 @@ import java.util.Optional;
  * I know this is a mess
  */
 public class PaletteEditScreen extends AbstractContainerScreen<EditMenu> implements MenuAccess<EditMenu> {
-    private static final ResourceLocation BG_TEXTURE = ResourceLocation.fromNamespaceAndPath(BlockPalettesClient.MOD_ID, "textures/gui/palette_view.png");
-    private static final ResourceLocation ADD_WEIGHT_TEXTURE = ResourceLocation.fromNamespaceAndPath(BlockPalettesClient.MOD_ID, "textures/gui/add_row.png");
-    private static final ResourceLocation INVENTORY_ROW_TEXTURE = ResourceLocation.fromNamespaceAndPath(BlockPalettesClient.MOD_ID, "textures/gui/inventory_row.png");
-    private static final ResourceLocation TEXT_ROW_TEXTURE = ResourceLocation.fromNamespaceAndPath(BlockPalettesClient.MOD_ID, "textures/gui/text_row.png");
-    private static final ResourceLocation SCROLLER_TEXTURE = ResourceLocation.fromNamespaceAndPath(BlockPalettesClient.MOD_ID, "textures/gui/scroller.png");
+    private static final ResourceLocation BG_TEXTURE = new ResourceLocation(BlockPalettesClient.MOD_ID, "textures/gui/palette_view.png");
+    private static final ResourceLocation ADD_WEIGHT_TEXTURE = new ResourceLocation(BlockPalettesClient.MOD_ID, "textures/gui/add_row.png");
+    private static final ResourceLocation INVENTORY_ROW_TEXTURE = new ResourceLocation(BlockPalettesClient.MOD_ID, "textures/gui/inventory_row.png");
+    private static final ResourceLocation TEXT_ROW_TEXTURE = new ResourceLocation(BlockPalettesClient.MOD_ID, "textures/gui/text_row.png");
+    private static final ResourceLocation SCROLLER_TEXTURE = new ResourceLocation(BlockPalettesClient.MOD_ID, "textures/gui/scroller.png");
 
     private static final int MAX_WEIGHT_LENGTH = 5;
     private static final int MAX_TITLE_LENGTH = 21;
@@ -133,9 +133,8 @@ public class PaletteEditScreen extends AbstractContainerScreen<EditMenu> impleme
     }
 
     @Override
-    public void renderBackground(GuiGraphics context, int mouseX, int mouseY, float delta){
-
-        super.renderBackground(context, mouseX, mouseY, delta);
+    public void renderBackground(GuiGraphics context){
+        super.renderBackground(context);
 
         // Draw background
         context.blit(BG_TEXTURE, leftPos, topPos, 0, 0, backgroundWidth, backgroundHeight);
@@ -147,10 +146,9 @@ public class PaletteEditScreen extends AbstractContainerScreen<EditMenu> impleme
 
     @Override
     public void render(GuiGraphics context, int mouseX, int mouseY, float delta) {
+        this.renderBackground(context);
 
         super.render(context, mouseX, mouseY, delta);
-
-        //renderBackground(context, mouseX, mouseY, delta);
 
         // Draw title
         String titleText = palette.getName();
@@ -740,15 +738,15 @@ public class PaletteEditScreen extends AbstractContainerScreen<EditMenu> impleme
     }
 
     @Override
-    public boolean mouseScrolled(double mouseX, double mouseY, double horizontalAmount, double verticalAmount) {
-        scrollPosition -= verticalAmount;
+    public boolean mouseScrolled(double mouseX, double mouseY, double amount) {
+        scrollPosition -= amount;
 
         if(scrollPosition <= 0)
             scrollPosition = 0;
         else if(scrollPosition >= palette.getScreenRowCount())
             scrollPosition = palette.getScreenRowCount();
 
-        return super.mouseScrolled(mouseX, mouseY, horizontalAmount, verticalAmount);
+        return super.mouseScrolled(mouseX, mouseY, amount);
     }
 
     /**

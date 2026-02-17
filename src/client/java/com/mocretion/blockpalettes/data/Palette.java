@@ -174,7 +174,7 @@ public class Palette {
                     int slot = i < 9 ? i + 36 : i;
                     ItemStack playerStack = playerInv.items.get(i);
 
-                    if (ItemStack.isSameItemSameComponents(playerStack, randomStack)) {
+                    if (ItemStack.isSameItemSameTags(playerStack, randomStack)) {
                         Minecraft.getInstance().gameMode.handleInventoryMouseClick(screenHandler.containerId, slot, hotbarSlot, ClickType.SWAP, player);
                         return;
                     }

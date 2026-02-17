@@ -28,10 +28,10 @@ import java.util.List;
 
 @Environment(EnvType.CLIENT)
 public class PaletteListScreen extends Screen {
-    private static final ResourceLocation BG_TEXTURE = ResourceLocation.fromNamespaceAndPath(BlockPalettesClient.MOD_ID, "textures/gui/palette_list.png");
-    private static final ResourceLocation PALETTE_PREVIEW_TEXTURE = ResourceLocation.fromNamespaceAndPath(BlockPalettesClient.MOD_ID, "textures/gui/palette_preview.png");
-    private static final ResourceLocation ADD_PALETTE_TEXTURE = ResourceLocation.fromNamespaceAndPath(BlockPalettesClient.MOD_ID, "textures/gui/add_palette.png");
-    private static final ResourceLocation SCROLLER_TEXTURE = ResourceLocation.fromNamespaceAndPath(BlockPalettesClient.MOD_ID, "textures/gui/scroller.png");
+    private static final ResourceLocation BG_TEXTURE = new ResourceLocation(BlockPalettesClient.MOD_ID, "textures/gui/palette_list.png");
+    private static final ResourceLocation PALETTE_PREVIEW_TEXTURE = new ResourceLocation(BlockPalettesClient.MOD_ID, "textures/gui/palette_preview.png");
+    private static final ResourceLocation ADD_PALETTE_TEXTURE = new ResourceLocation(BlockPalettesClient.MOD_ID, "textures/gui/add_palette.png");
+    private static final ResourceLocation SCROLLER_TEXTURE = new ResourceLocation(BlockPalettesClient.MOD_ID, "textures/gui/scroller.png");
     // GUI dimensions
     private final int backgroundWidth = 195;
     private final int backgroundHeight = 256;
@@ -124,9 +124,8 @@ public class PaletteListScreen extends Screen {
     }
 
     @Override
-    public void renderBackground(GuiGraphics context, int mouseX, int mouseY, float delta){
-
-        super.renderBackground(context, mouseX, mouseY, delta);
+    public void renderBackground(GuiGraphics context){
+        super.renderBackground(context);
 
         // Draw background
         context.blit(BG_TEXTURE, leftPos, topPos, 0, 0, backgroundWidth, backgroundHeight);
@@ -134,6 +133,7 @@ public class PaletteListScreen extends Screen {
 
     @Override
     public void render(GuiGraphics context, int mouseX, int mouseY, float delta) {
+        this.renderBackground(context);
 
         super.render(context, mouseX, mouseY, delta);
 
@@ -691,15 +691,15 @@ public class PaletteListScreen extends Screen {
     }
 
     @Override
-    public boolean mouseScrolled(double mouseX, double mouseY, double horizontalAmount, double verticalAmount) {
-        scrollPosition -= verticalAmount;
+    public boolean mouseScrolled(double mouseX, double mouseY, double amount) {
+        scrollPosition -= amount;
 
         if(scrollPosition <= 0)
             scrollPosition = 0;
         else if(scrollPosition >= getMaxScrollSize())
             scrollPosition = getMaxScrollSize();
 
-        return super.mouseScrolled(mouseX, mouseY, horizontalAmount, verticalAmount);
+        return super.mouseScrolled(mouseX, mouseY, amount);
     }
 
     private int getMaxScrollSize(){

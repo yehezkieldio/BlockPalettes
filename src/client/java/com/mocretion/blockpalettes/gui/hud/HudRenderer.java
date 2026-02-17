@@ -1,11 +1,9 @@
 package com.mocretion.blockpalettes.gui.hud;
 
-import com.mocretion.blockpalettes.data.Palette;
 import com.mocretion.blockpalettes.data.PaletteManager;
 import com.mocretion.blockpalettes.gui.ButtonCatalogue;
 import com.mocretion.blockpalettes.gui.ButtonInfo;
 import com.mojang.blaze3d.systems.RenderSystem;
-import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 
@@ -19,7 +17,7 @@ public class HudRenderer {
     private static final int OVERLAY_HEIGHT = 18;
     private static final int OVERLAY_Width = 18;
 
-    public void renderHudAdditions(GuiGraphics context, DeltaTracker renderTickCounter) {
+    public void renderHudAdditions(GuiGraphics context, float tickDelta) {
 
         if(client.options.hideGui || !PaletteManager.getIsEnabled() || PaletteManager.getSelectedPalettes().isEmpty())
             return;
