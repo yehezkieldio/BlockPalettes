@@ -1,6 +1,5 @@
 package com.mocretion.blockpalettes.plugins.rei;
 
-import com.mocretion.blockpalettes.BlockPalettesClient;
 import com.mocretion.blockpalettes.gui.screens.PaletteEditScreen;
 import me.shedaniel.rei.api.client.gui.drag.DraggableStack;
 import me.shedaniel.rei.api.client.gui.drag.DraggableStackVisitor;
@@ -28,6 +27,6 @@ public class ReiGhostHandler implements DraggableStackVisitor<PaletteEditScreen>
 
     @Override
     public <R extends Screen> boolean isHandingScreen(R screen) {
-        return true;
+        return screen instanceof PaletteEditScreen;
     }
 }
