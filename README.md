@@ -1,3 +1,7 @@
+## Disclaimer
+This repository is a **personal fork** of BlockPalettes, maintained to run on **Minecraft 1.20.1**.
+It is **not** the official upstream repository.
+
 ## What it does
 This **client side** mod **shuffles** your **hotbar** items based on from you defined and selected "block palettes".
 
